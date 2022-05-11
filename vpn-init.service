@@ -1,0 +1,16 @@
+# vpn-init.service  (systemd)
+
+[Unit]
+Description=Starts the VPN connection
+ConditionPathExists=/usr/local/bin/vpn-init.sh
+
+[Service]
+type=forking
+ExecStart=/usr/local/bin/vpn-init.sh start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVstartPriority=99
+
+[Install]
+WantedBy=multi-user.target
