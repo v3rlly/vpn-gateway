@@ -48,9 +48,9 @@ iptables -I OUTPUT 1 -p $VPN_PROTOCOL --destination-port $VPN_PORT -m comment --
 
 
 # Block All
-iptables -A OUTPUT -j DROP
-iptables -A INPUT -j DROP
-iptables -A FORWARD -j DROP
+iptables -A OUTPUT -j DROP;
+iptables -A INPUT -j DROP;
+iptables -A FORWARD -j DROP;
 
 # Save
 echo "[+] Saving..";
