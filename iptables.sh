@@ -3,6 +3,7 @@
 # vars
 VPN_PROTOCOL="udp";
 VPN_PORT=1194;
+NETWORK_ADDRESS="192.168.200.0/24";
 
 # Flush all existing settings
 iptables -t nat -F;
@@ -27,8 +28,8 @@ iptables -A INPUT -s 255.255.255.255 -j ACCEPT;
 
 
 # Allow communication within your local network
-iptables -A INPUT -s 192.168.200.0/24 -d 192.168.200.0/24 -j ACCEPT;
-iptables -A OUTPUT -s 192.168.200.0/24 -d 192.168.200.0/24 -j ACCEPT;
+iptables -A INPUT -s $NETWORK_ADDRESS -d $NETWORK_ADDRESS -j ACCEPT;
+iptables -A OUTPUT -s $NETWORK_ADDRESS -d $NETWORK_ADDRESS -j ACCEPT;
 
 
 # Allow established sessions to receive traffic
